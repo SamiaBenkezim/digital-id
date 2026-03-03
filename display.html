@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Identity Constructed</title>
+</head>
+<body>
+    <div class="grid-overlay"></div>
+    
+    <div class="main-container" style="text-align: center;">
+        <div class="form-grid" style="border-top: 8px solid var(--neon);">
+            <p style="font-family: 'Syncopate'; font-size: 0.6rem; opacity: 0.4;" id="resNid"></p>
+            
+            <img id="resImg" style="width: 180px; margin-top: -80px; background: var(--dark); border-radius: 40px; border: 4px solid var(--neon);">
+            
+            <h1 id="resName" style="margin: 20px 0 0 0; font-size: 2rem;"></h1>
+            <p id="resUser" style="color: var(--neon); font-weight: bold; margin-bottom: 30px;"></p>
+
+            <div style="text-align: left; background: rgba(0,0,0,0.5); padding: 25px; border-radius: 20px;">
+                <p>🛰️ <strong>ROLE:</strong> <span id="resRole"></span></p>
+                <p>📧 <strong>EMAIL:</strong> <span id="resEmail"></span></p>
+                <p>🔗 <strong>LINK:</strong> <a id="resLink" href="#" style="color: var(--neon);">View Portfolio</a></p>
+                <p>📝 <strong>BIO:</strong> <span id="resBio"></span></p>
+                
+                <div style="margin-top: 20px;">
+                    <label>SYNC CAPACITY</label>
+                    <div style="width: 100%; height: 10px; background: #222; border-radius: 10px; margin-top: 5px;">
+                        <div id="resBar" style="height: 100%; background: var(--neon); border-radius: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="location.href='index.html'" class="submit-btn" style="background: none; border: 2px solid var(--neon); color: var(--neon); margin-top: 30px;">RECONSTRUCT IDENTITY</button>
+        </div>
+    </div>
+
+    <script>
+        const d = JSON.parse(localStorage.getItem('neuralData'));
+        if(d) {
+            document.documentElement.style.setProperty('--neon', d.color);
+            document.getElementById('resImg').src = d.avatar;
+            document.getElementById('resNid').innerText = d.nid;
+            document.getElementById('resName').innerText = d.name;
+            document.getElementById('resUser').innerText = `@${d.user}`;
+            document.getElementById('resEmail').innerText = d.email;
+            document.getElementById('resRole').innerText = d.role;
+            document.getElementById('resBio').innerText = d.bio || "No data stored.";
+            document.getElementById('resLink').href = d.social || "#";
+            document.getElementById('resBar').style.width = d.sync + "%";
+        }
+    </script>
+</body>
+</html>

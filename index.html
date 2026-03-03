@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identity Constructor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grid-overlay"></div>
+    <div class="glow-sphere"></div>
+
+    <div class="main-container">
+        <header>
+            <div class="logo">DIGITAL PROFILE CREATOR</div>
+            <p>my tech identity...</p>
+        </header>
+
+        <div class="identity-preview">
+            <img id="liveAvatar" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Lucky" alt="Neural Avatar">
+            <div class="scan-line"></div>
+        </div>
+
+        <form id="identityForm">
+            <section class="form-grid">
+                <div class="input-group">
+                    <input type="text" id="name" placeholder="FULL NAME" required>
+                    <input type="text" id="user" placeholder="@USERNAME (Generates Avatar)" oninput="updateAvatar(this.value)" required>
+                    <input type="password" id="password" placeholder="ENTER PASSWORD">
+                </div>
+
+                <div class="input-group">
+                    <input type="email" id="email" placeholder=" EMAIL@Gmail.com" required>
+                    <input type="tel" id="phone" placeholder="your phone number ">
+                    <input type="date" id="dob" title="Date of Birth">
+                </div>
+
+                <div class="input-group full">
+                    <input type="url" id="social" placeholder="PORTFOLIO / GITHUB URL">
+                    <textarea id="bio" placeholder="WRITE YOUR DIGITAL MANIFESTO..."></textarea>
+                </div>
+
+                <div class="controls">
+                    <div class="control-box">
+                        <label>THEME COLOR</label>
+                        <input type="color" id="theme" value="#00ffcc" oninput="changeTheme(this.value)">
+                    </div>
+                    <div class="control-box">
+                        <label>Skill LEVEL</label>
+                        <select id="role">
+                            <option value="Overlord">Beginner</option>
+                            <option value="Developer">Intermediate</option>
+                            <option value="Creative">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="range-box">
+                    <label>Skill confidence: <span id="syncVal">85</span>%</label>
+                    <input type="range" id="sync" min="0" max="100" value="85" oninput="document.getElementById('syncVal').innerText=this.value">
+                </div>
+            </section>
+
+            <div class="action-zone">
+                <button type="submit" class="submit-btn">INITIATE DEPLOYMENT</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
