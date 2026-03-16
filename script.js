@@ -26,8 +26,7 @@ document.getElementById('identityForm').addEventListener('submit', (e) => {
     };
 
     localStorage.setItem('neuralData', JSON.stringify(data));
-    
-    // Alert user and redirect
+
     document.querySelector('.submit-btn').innerText = "UPLOADING...";
     setTimeout(() => window.location.href = 'display.html', 1000);
 });
